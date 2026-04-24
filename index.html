@@ -119,16 +119,27 @@
             text-decoration: none;
             border-radius: 8px;
             font-weight: bold;
+            transition: transform 0.15s ease, background 0.15s ease;
         }
 
         .btn:hover {
             background: #0ea5e9;
+            transform: scale(1.05);
         }
 
         .projects-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+        }
+
+        .card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
         }
     </style>
 </head>
