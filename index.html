@@ -141,6 +141,17 @@
             transform: translateY(-8px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
         }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 
@@ -170,7 +181,7 @@
     <section id="about">
         <h2>About Me</h2>
 
-        <div class="card">
+        <div class="card fade-in">
             <p>
                 I'm a 16-year-old student learning web development.
                 I build websites using HTML, CSS and JavaScript.
@@ -186,7 +197,7 @@
 
         <div class="projects-container">
 
-            <div class="card">
+            <div class="card fade-in">
                 <h3>Portfolio Website</h3>
                 <p>My personal portfolio built with HTML and CSS.</p>
 
@@ -195,7 +206,7 @@
                 </a>
             </div>
 
-            <div class="card">
+            <div class="card fade-in">
                 <h3>Calculator App</h3>
                 <p>A simple calculator built with HTML, CSS and JavaScript.</p>
 
@@ -213,7 +224,7 @@
     <section id="contact">
         <h2>Contact</h2>
 
-        <div class="card">
+        <div class="card fade-in">
             <p>Email: khojayevramzbek@gmail.com</p>
             <p>GitHub: github.com/khojayevramzbek-glitch</p>
         </div>
@@ -224,7 +235,20 @@
     <footer>
         <p>© 2026 Ramzbek</p>
     </footer>
+    <script>
+        const elements = document.querySelectorAll(".fade-in");
 
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                }
+            });
+        });
+
+        elements.forEach(el => observer.observe(el));
+    </script>
 </body>
+
 
 </html>
