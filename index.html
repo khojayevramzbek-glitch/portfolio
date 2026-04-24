@@ -1,278 +1,307 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramzbek Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramzbek Portfolio</title>
 
+<style>
 
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #0f172a;
-            color: white;
-            text-align: center;
-        }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+}
 
-        /* NAVBAR */
+/* NAVBAR */
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #020617;
-            padding: 15px 40px;
-            position: sticky;
-            top: 0;
-        }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #020617;
+    padding: 15px 40px;
+    position: sticky;
+    top: 0;
+}
 
-        .logo {
-            color: white;
-            font-size: 22px;
-            margin: 0;
-        }
+.logo {
+    font-size: 22px;
+}
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            margin: 0;
-            padding: 0;
-        }
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        .nav-links a:hover {
-            color: #38bdf8;
-        }
+.nav-links a:hover {
+    color: #38bdf8;
+}
 
-        /* HEADER */
+/* HEADER */
 
-        header {
-            background: #1e293b;
-            padding: 40px 20px;
-        }
+header {
+    background: #1e293b;
+    padding: 40px 20px;
+}
 
-        h1 {
-            font-size: 40px;
-            margin: 10px 0;
-        }
+h1 {
+    font-size: 40px;
+    margin: 10px 0;
+}
 
-        p {
-            font-size: 18px;
-            color: #cbd5f5;
-        }
+p {
+    font-size: 18px;
+    color: #cbd5f5;
+}
 
-        section {
-            padding: 40px 20px;
-        }
+section {
+    padding: 40px 20px;
+}
 
-        .card {
-            background: #1e293b;
-            padding: 20px;
-            margin: 15px auto;
-            max-width: 500px;
-            border-radius: 10px;
-        }
+/* PROJECT GRID */
 
-        footer {
-            background: #020617;
-            padding: 15px;
-            margin-top: 40px;
-        }
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
 
-        /* RESPONSIVE */
+.card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 10px;
 
-        @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-            .navbar {
-                flex-direction: column;
-                gap: 10px;
-            }
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-            .nav-links {
-                flex-direction: column;
-                gap: 10px;
-            }
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
 
-            h1 {
-                font-size: 28px;
-            }
+/* BUTTON */
 
-        }
+.btn {
+    display: inline-block;
+    margin-top: auto;
+    padding: 10px 18px;
+    background: #38bdf8;
+    color: black;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
 
-        .btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 18px;
-            background: #38bdf8;
-            color: black;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: transform 0.15s ease, background 0.15s ease;
-        }
+.btn:hover {
+    background: #0ea5e9;
+    transform: scale(1.05);
+}
 
-        .btn:hover {
-            background: #0ea5e9;
-            transform: scale(1.05);
-        }
+/* ANIMATION */
 
-        .projects-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
 
-        .card {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-        }
+/* FOOTER */
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
+footer {
+    background: #020617;
+    padding: 15px;
+    margin-top: 40px;
+}
 
-        .fade-in.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
+<!-- NAVBAR -->
 
-    <nav class="navbar">
-        <h2 class="logo">Ramzbek</h2>
+<nav class="navbar">
+<h2 class="logo">Ramzbek</h2>
 
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
 
-    <!-- HEADER -->
+<!-- HEADER -->
 
-    <header>
-        <h1>Hi, I'm Ramzbek</h1>
-        <p>Frontend Developer | Student | будущий IT специалист</p>
-        <a class="btn" href="cv.pdf" download>
-            Download CV
-        </a>
-    </header>
+<header>
+<h1>Hi, I'm Ramzbek</h1>
+<p>Frontend Developer | Student | будущий IT специалист</p>
 
-    <!-- ABOUT -->
+<a class="btn" href="cv.pdf" download>
+Download CV
+</a>
+</header>
 
-    <section id="about">
-        <h2>About Me</h2>
+<!-- ABOUT -->
 
-        <div class="card fade-in">
-            <p>
-                I'm a 16-year-old student learning web development.
-                I build websites using HTML, CSS and JavaScript.
-            </p>
-        </div>
-    </section>
+<section id="about">
 
-    <!-- PROJECTS -->
+<h2>About Me</h2>
 
-    <section id="projects">
+<div class="card fade-in">
+<p>
+I'm a 16-year-old student learning web development.
+I build websites using HTML, CSS and JavaScript.
+</p>
+</div>
 
-        <h2>My Projects</h2>
+</section>
 
-        <div class="projects-container">
+<!-- PROJECTS -->
 
-            <div class="card fade-in">
-                <h3>Portfolio Website</h3>
-                <p>My personal portfolio built with HTML and CSS.</p>
+<section id="projects">
 
-                <a class="btn" href="https://khojayevramzbek-glitch.github.io/portfolio/" target="_blank">
-                    View Project
-                </a>
-            </div>
+<h2>My Projects</h2>
 
-            <div class="card fade-in">
-                <h3>Calculator App</h3>
-                <p>A simple calculator built with HTML, CSS and JavaScript.</p>
+<div class="projects-container">
 
-                <a class="btn" href="calculator/" target="_blank">
-                    View Project
-                </a>
-            </div>
-            <div class="card fade-in">
-                <h3>Weather App</h3>
-                <p>Weather application using API.</p>
+<div class="card fade-in">
+<h3>Portfolio Website</h3>
+<p>My personal portfolio built with HTML and CSS.</p>
 
-                <a class="btn" href="weather/" target="_blank">
-                    View Project
-                </a>
-            </div>
-            <div class="card fade-in">
-                <h3>Todo App</h3>
-                <p>Task manager using JavaScript and localStorage.</p>
+<a class="btn"
+href="https://khojayevramzbek-glitch.github.io/portfolio/"
+target="_blank">
+View Project </a>
 
-                <a class="btn" href="todo/" target="_blank">
-                    View Project
-                </a>
-            </div>
+</div>
 
-        </div>
+<div class="card fade-in">
+<h3>Calculator App</h3>
+<p>A simple calculator built with HTML, CSS and JavaScript.</p>
 
-    </section>
+<a class="btn"
+href="calculator/"
+target="_blank">
+View Project </a>
 
-    <!-- CONTACT -->
+</div>
 
-    <section id="contact">
-        <h2>Contact</h2>
+<div class="card fade-in">
+<h3>Weather App</h3>
+<p>Weather application using API.</p>
 
-        <div class="card fade-in">
-            <p>
-                GitHub:
-                <a href="https://github.com/khojayevramzbek-glitch" target="_blank" style="color:#38bdf8;">
-                    github.com/khojayevramzbek-glitch
-                </a>
-            </p>
-        </div>
-    </section>
+<a class="btn"
+href="todo/weather/"
+target="_blank">
+View Project </a>
 
-    <!-- FOOTER -->
+</div>
 
-    <footer>
-        <p>© 2026 Ramzbek</p>
-    </footer>
-    <script>
-        const elements = document.querySelectorAll(".fade-in");
+<div class="card fade-in">
+<h3>Todo App</h3>
+<p>Task manager using JavaScript and localStorage.</p>
 
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("show");
-                }
-            });
-        });
+<a class="btn"
+href="todo/"
+target="_blank">
+View Project </a>
 
-        elements.forEach(el => observer.observe(el));
-    </script>
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<h2>Contact</h2>
+
+<div class="card fade-in">
+<p>
+GitHub:
+<a
+href="https://github.com/khojayevramzbek-glitch"
+target="_blank"
+style="color:#38bdf8;">
+github.com/khojayevramzbek-glitch
+</a>
+</p>
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+<p>© 2026 Ramzbek</p>
+</footer>
+
+<script>
+
+const elements = document.querySelectorAll(".fade-in");
+
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add("show");
+}
+});
+});
+
+elements.forEach(el => observer.observe(el));
+
+</script>
+
 </body>
-
-
 </html>

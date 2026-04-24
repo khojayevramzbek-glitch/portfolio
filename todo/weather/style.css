@@ -1,0 +1,241 @@
+
+/* BASE */
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin: 0;
+}
+
+/* CARD */
+
+.weather-container {
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 16px;
+    width: 350px;
+    text-align: center;
+
+    backdrop-filter: blur(6px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.6);
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 16px;
+    background: #38bdf8;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0ea5e9;
+}
+
+#weatherResult {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+#weatherResult h2 {
+    margin-bottom: 10px;
+    font-size: 26px;
+}
+
+/* BACKGROUND STATES */
+
+body.clear {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+}
+
+body.clouds {
+    background: linear-gradient(135deg, #64748b, #334155);
+}
+
+body.rain {
+    background: linear-gradient(135deg, #0ea5e9, #0369a1);
+}
+
+body.snow {
+    background: linear-gradient(135deg, #e2e8f0, #94a3b8);
+}
+
+body.default-weather {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+/* ANIMATION CONTAINER */
+
+#weatherAnimation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* RAIN */
+
+.rain-drop {
+    position: absolute;
+    width: 2px;
+    height: 18px;
+
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        #38bdf8
+    );
+
+    opacity: 0.7;
+
+    animation: rainFall linear infinite;
+}
+
+@keyframes rainFall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+/* SNOW */
+
+.snowflake {
+    position: absolute;
+    color: white;
+    font-size: 18px;
+
+    animation: snowFall linear infinite;
+}
+
+@keyframes snowFall {
+    0% {
+        transform: translateY(-10vh) translateX(0);
+    }
+    50% {
+        transform: translateY(50vh) translateX(20px);
+    }
+    100% {
+        transform: translateY(100vh) translateX(-20px);
+    }
+}
+
+/* SUN */
+
+.sun {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+
+    width: 80px;
+    height: 80px;
+
+    background: radial-gradient(circle, #fde047, #f59e0b);
+    border-radius: 50%;
+
+    box-shadow: 0 0 40px #facc15;
+
+    animation:
+        rotateSun 20s linear infinite,
+        pulseSun 3s ease-in-out infinite;
+}
+
+@keyframes rotateSun {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulseSun {
+    0% {
+        box-shadow: 0 0 40px #facc15;
+    }
+    50% {
+        box-shadow: 0 0 70px #fde047;
+    }
+    100% {
+        box-shadow: 0 0 40px #facc15;
+    }
+}
+
+/* CLOUD */
+
+.cloud {
+    position: absolute;
+    top: 80px;
+    left: -200px;
+
+    width: 200px;
+    height: 60px;
+
+    background: #e2e8f0;
+    border-radius: 50px;
+
+    opacity: 0.8;
+
+    animation: moveCloud 25s linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+    content: "";
+    position: absolute;
+    background: #e2e8f0;
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 80px;
+    height: 80px;
+    top: -40px;
+    left: 20px;
+}
+
+.cloud::after {
+    width: 100px;
+    height: 100px;
+    top: -50px;
+    right: 20px;
+}
+
+@keyframes moveCloud {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(120vw);
+    }
+}
