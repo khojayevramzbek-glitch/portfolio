@@ -305,9 +305,16 @@
 
         @media (max-width: 768px) {
 
-            .navbar {
+            h1 {
+                font-size: 32px;
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
                 flex-direction: column;
-                gap: 10px;
             }
 
         }
@@ -566,16 +573,6 @@
 
         }
 
-        .about-card {
-
-            max-width: 1000px;
-
-            margin: auto;
-
-            padding: 30px;
-
-        }
-
         .about-info {
 
             display: flex;
@@ -760,61 +757,6 @@
 
             display: none;
 
-        }
-
-        .projects-container {
-
-            max-width: 1100px;
-
-            margin: auto;
-
-        }
-
-        .contact-card {
-
-            max-width: 700px;
-
-            margin: auto;
-
-        }
-
-        section {
-
-            padding: 80px 20px;
-
-        }
-
-        .about-text p {
-
-            font-size: 18px;
-
-            line-height: 1.7;
-
-        }
-
-        .about-card {
-            max-width: 1000px;
-            margin: auto;
-            padding: 30px;
-        }
-
-        .projects-container {
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .contact-card {
-            max-width: 700px;
-            margin: auto;
-        }
-
-        section {
-            padding: 80px 20px;
-        }
-
-        .about-text p {
-            font-size: 18px;
-            line-height: 1.7;
         }
     </style>
 
@@ -1219,6 +1161,8 @@
 
     </footer>
 
+    <!-- MUHIM: bu faqat script qismi qo‘shimcha upgrade,
+sen yuborgan kodning oxiridagi <script> ni shu bilan almashtir -->
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
@@ -1258,9 +1202,7 @@
 
         if (savedTheme === "light") {
 
-            document.body.classList.add(
-                "light-mode"
-            );
+            document.body.classList.add("light-mode");
 
             toggle.textContent = "☀️";
 
@@ -1268,21 +1210,14 @@
 
         toggle.addEventListener("click", () => {
 
-            document.body.classList.toggle(
-                "light-mode"
-            );
+            document.body.classList.toggle("light-mode");
 
             let theme =
-                document.body.classList.contains(
-                    "light-mode"
-                )
+                document.body.classList.contains("light-mode")
                     ? "light"
                     : "dark";
 
-            localStorage.setItem(
-                "theme",
-                theme
-            );
+            localStorage.setItem("theme", theme);
 
             toggle.textContent =
                 theme === "light"
@@ -1301,10 +1236,8 @@
 
             if (i < text.length) {
 
-                document
-                    .getElementById("typing")
-                    .innerHTML +=
-                    text.charAt(i);
+                document.getElementById("typing")
+                    .innerHTML += text.charAt(i);
 
                 i++;
 
@@ -1324,8 +1257,7 @@
                 about: "About Me",
                 projects: "My Projects",
                 contact: "Contact",
-                subtitle:
-                    "Frontend Developer • Student",
+                subtitle: "Frontend Developer • Student",
                 aboutText:
                     "I'm a 16-year-old student learning web development. I build modern websites using HTML, CSS and JavaScript."
             },
@@ -1389,13 +1321,11 @@
                 t.subtitle;
 
             document.querySelector(
-                "#about .about-text p"
+                "#about p"
             ).textContent =
                 t.aboutText;
 
         }
-
-        /* LOAD SAVED LANGUAGE */
 
         let savedLang =
             localStorage.getItem(
@@ -1424,98 +1354,91 @@
 
         /* PARTICLES */
 
-        particlesJS(
-            "particles-js",
-            {
+        particlesJS("particles-js", {
 
-                particles: {
+            particles: {
 
-                    number: {
-                        value: 60
-                    },
-
-                    color: {
-                        value: "#38bdf8"
-                    },
-
-                    shape: {
-                        type: "circle"
-                    },
-
-                    opacity: {
-                        value: 0.5
-                    },
-
-                    size: {
-                        value: 3
-                    },
-
-                    move: {
-                        enable: true,
-                        speed: 2
-                    }
-
+                number: {
+                    value: 60
                 },
 
-                interactivity: {
+                color: {
+                    value: "#38bdf8"
+                },
 
-                    events: {
+                shape: {
+                    type: "circle"
+                },
 
-                        onhover: {
-                            enable: true,
-                            mode: "repulse"
-                        }
+                opacity: {
+                    value: 0.5
+                },
 
+                size: {
+                    value: 3
+                },
+
+                move: {
+                    enable: true,
+                    speed: 2
+                }
+
+            },
+
+            interactivity: {
+
+                events: {
+
+                    onhover: {
+                        enable: true,
+                        mode: "repulse"
                     }
 
                 }
 
             }
-        );
 
-        /* SCROLL TO TOP */
+        });
 
-        const topBtn =
+        /* TOP BUTTON SCROLL FUNCTIONALITY */
+
+        const topBtn = document.getElementById("topBtn");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                topBtn.style.display = "block";
+            } else {
+                topBtn.style.display = "none";
+            }
+        });
+
+        topBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        window.addEventListener("scroll", () => {
+
+            const scrollTop =
+                document.documentElement.scrollTop;
+
+            const height =
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
+
+            const scrolled =
+                (scrollTop / height) * 100;
+
             document.getElementById(
-                "topBtn"
-            );
+                "progress-bar"
+            ).style.width =
+                scrolled + "%";
 
-        window.onscroll =
-            function () {
-
-                if (
-                    document.body.scrollTop > 200 ||
-                    document.documentElement.scrollTop > 200
-                ) {
-
-                    topBtn.style.display =
-                        "block";
-
-                }
-
-                else {
-
-                    topBtn.style.display =
-                        "none";
-
-                }
-
-            };
-
-        topBtn.onclick =
-            function () {
-
-                window.scrollTo({
-
-                    top: 0,
-
-                    behavior: "smooth"
-
-                });
-
-            };
-
+        });
     </script>
+
     <button id="topBtn">↑</button>
 </body>
 
