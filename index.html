@@ -566,6 +566,16 @@
 
         }
 
+        .about-card {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            padding: 30px;
+
+        }
+
         .about-info {
 
             display: flex;
@@ -654,6 +664,157 @@
 
             }
 
+        }
+
+        .stats {
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 20px;
+
+        }
+
+        .stat {
+
+            background: #1e293b;
+
+            padding: 20px;
+
+            border-radius: 12px;
+
+            width: 160px;
+
+            transition: 0.3s;
+
+        }
+
+        .stat:hover {
+
+            transform: translateY(-6px);
+
+        }
+
+        .stat h3 {
+
+            font-size: 32px;
+
+            color: #38bdf8;
+
+            margin-bottom: 5px;
+
+        }
+
+        .services {
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 20px;
+
+        }
+
+        .service {
+
+            background: #1e293b;
+
+            padding: 20px;
+
+            border-radius: 12px;
+
+            width: 220px;
+
+            transition: 0.3s;
+
+        }
+
+        .service:hover {
+
+            transform: scale(1.05);
+
+        }
+
+        #topBtn {
+
+            position: fixed;
+
+            bottom: 30px;
+
+            right: 30px;
+
+            background: #38bdf8;
+
+            border: none;
+
+            padding: 12px 16px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            display: none;
+
+        }
+
+        .projects-container {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+        }
+
+        .contact-card {
+
+            max-width: 700px;
+
+            margin: auto;
+
+        }
+
+        section {
+
+            padding: 80px 20px;
+
+        }
+
+        .about-text p {
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+        }
+
+        .about-card {
+            max-width: 1000px;
+            margin: auto;
+            padding: 30px;
+        }
+
+        .projects-container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .contact-card {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        section {
+            padding: 80px 20px;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.7;
         }
     </style>
 
@@ -779,6 +940,33 @@
         </div>
 
     </section>
+    <section>
+
+        <h2>What I Do</h2>
+
+        <div class="services">
+
+            <div class="service">
+                💻
+                <h3>Web Development</h3>
+                <p>I build modern responsive websites.</p>
+            </div>
+
+            <div class="service">
+                🎨
+                <h3>UI Design</h3>
+                <p>Clean and modern user interfaces.</p>
+            </div>
+
+            <div class="service">
+                ⚡
+                <h3>JavaScript Apps</h3>
+                <p>Interactive web applications.</p>
+            </div>
+
+        </div>
+
+    </section>
 
     <!-- SKILLS -->
 
@@ -793,6 +981,35 @@
             <div class="skill">JavaScript</div>
             <div class="skill">Git</div>
             <div class="skill">API</div>
+
+        </div>
+
+    </section>
+    <section>
+
+        <h2>My Statistics</h2>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h3>4+</h3>
+                <p>Projects</p>
+            </div>
+
+            <div class="stat">
+                <h3>1+</h3>
+                <p>Years Learning</p>
+            </div>
+
+            <div class="stat">
+                <h3>10+</h3>
+                <p>Technologies</p>
+            </div>
+
+            <div class="stat">
+                <h3>100%</h3>
+                <p>Motivation</p>
+            </div>
 
         </div>
 
@@ -1002,8 +1219,6 @@
 
     </footer>
 
-    <!-- MUHIM: bu faqat script qismi qo‘shimcha upgrade,
-sen yuborgan kodning oxiridagi <script> ni shu bilan almashtir -->
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
@@ -1043,7 +1258,9 @@ sen yuborgan kodning oxiridagi <script> ni shu bilan almashtir -->
 
         if (savedTheme === "light") {
 
-            document.body.classList.add("light-mode");
+            document.body.classList.add(
+                "light-mode"
+            );
 
             toggle.textContent = "☀️";
 
@@ -1051,14 +1268,21 @@ sen yuborgan kodning oxiridagi <script> ni shu bilan almashtir -->
 
         toggle.addEventListener("click", () => {
 
-            document.body.classList.toggle("light-mode");
+            document.body.classList.toggle(
+                "light-mode"
+            );
 
             let theme =
-                document.body.classList.contains("light-mode")
+                document.body.classList.contains(
+                    "light-mode"
+                )
                     ? "light"
                     : "dark";
 
-            localStorage.setItem("theme", theme);
+            localStorage.setItem(
+                "theme",
+                theme
+            );
 
             toggle.textContent =
                 theme === "light"
@@ -1077,8 +1301,10 @@ sen yuborgan kodning oxiridagi <script> ni shu bilan almashtir -->
 
             if (i < text.length) {
 
-                document.getElementById("typing")
-                    .innerHTML += text.charAt(i);
+                document
+                    .getElementById("typing")
+                    .innerHTML +=
+                    text.charAt(i);
 
                 i++;
 
@@ -1098,7 +1324,8 @@ sen yuborgan kodning oxiridagi <script> ni shu bilan almashtir -->
                 about: "About Me",
                 projects: "My Projects",
                 contact: "Contact",
-                subtitle: "Frontend Developer • Student",
+                subtitle:
+                    "Frontend Developer • Student",
                 aboutText:
                     "I'm a 16-year-old student learning web development. I build modern websites using HTML, CSS and JavaScript."
             },
@@ -1162,11 +1389,13 @@ sen yuborgan kodning oxiridagi <script> ni shu bilan almashtir -->
                 t.subtitle;
 
             document.querySelector(
-                "#about p"
+                "#about .about-text p"
             ).textContent =
                 t.aboutText;
 
         }
+
+        /* LOAD SAVED LANGUAGE */
 
         let savedLang =
             localStorage.getItem(
@@ -1195,54 +1424,99 @@ sen yuborgan kodning oxiridagi <script> ni shu bilan almashtir -->
 
         /* PARTICLES */
 
-        particlesJS("particles-js", {
+        particlesJS(
+            "particles-js",
+            {
 
-            particles: {
+                particles: {
 
-                number: {
-                    value: 60
-                },
+                    number: {
+                        value: 60
+                    },
 
-                color: {
-                    value: "#38bdf8"
-                },
+                    color: {
+                        value: "#38bdf8"
+                    },
 
-                shape: {
-                    type: "circle"
-                },
+                    shape: {
+                        type: "circle"
+                    },
 
-                opacity: {
-                    value: 0.5
-                },
+                    opacity: {
+                        value: 0.5
+                    },
 
-                size: {
-                    value: 3
-                },
+                    size: {
+                        value: 3
+                    },
 
-                move: {
-                    enable: true,
-                    speed: 2
-                }
-
-            },
-
-            interactivity: {
-
-                events: {
-
-                    onhover: {
+                    move: {
                         enable: true,
-                        mode: "repulse"
+                        speed: 2
+                    }
+
+                },
+
+                interactivity: {
+
+                    events: {
+
+                        onhover: {
+                            enable: true,
+                            mode: "repulse"
+                        }
+
                     }
 
                 }
 
             }
+        );
 
-        });
+        /* SCROLL TO TOP */
+
+        const topBtn =
+            document.getElementById(
+                "topBtn"
+            );
+
+        window.onscroll =
+            function () {
+
+                if (
+                    document.body.scrollTop > 200 ||
+                    document.documentElement.scrollTop > 200
+                ) {
+
+                    topBtn.style.display =
+                        "block";
+
+                }
+
+                else {
+
+                    topBtn.style.display =
+                        "none";
+
+                }
+
+            };
+
+        topBtn.onclick =
+            function () {
+
+                window.scrollTo({
+
+                    top: 0,
+
+                    behavior: "smooth"
+
+                });
+
+            };
 
     </script>
-
+    <button id="topBtn">↑</button>
 </body>
 
 </html>
