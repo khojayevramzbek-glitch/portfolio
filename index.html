@@ -534,11 +534,28 @@
             transform: scale(1.1);
 
         }
+
+        /* PARTICLES BACKGROUND */
+
+        #particles-js {
+
+            position: fixed;
+
+            width: 100%;
+            height: 100%;
+
+            top: 0;
+            left: 0;
+
+            z-index: -1;
+
+        }
     </style>
 
 </head>
 
 <body>
+    <div id="particles-js"></div>
     <!-- LOADING SCREEN -->
 
     <div id="loader">
@@ -842,6 +859,11 @@
 
     </footer>
 
+    <!-- MUHIM: bu faqat script qismi qo‘shimcha upgrade,
+sen yuborgan kodning oxiridagi <script> ni shu bilan almashtir -->
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
     <script>
 
         /* FADE ANIMATION */
@@ -924,60 +946,41 @@
         }
 
         type();
-        /* LANGUAGE DATA */
+
+        /* LANGUAGE */
 
         const translations = {
 
             en: {
-
                 about: "About Me",
-
                 projects: "My Projects",
-
                 contact: "Contact",
-
                 subtitle: "Frontend Developer • Student",
-
                 aboutText:
                     "I'm a 16-year-old student learning web development. I build modern websites using HTML, CSS and JavaScript."
-
             },
 
             ru: {
-
                 about: "Обо мне",
-
                 projects: "Мои проекты",
-
                 contact: "Контакт",
-
                 subtitle:
                     "Frontend разработчик • Студент",
-
                 aboutText:
                     "Мне 16 лет, я изучаю веб-разработку. Создаю современные сайты на HTML, CSS и JavaScript."
-
             },
 
             uz: {
-
                 about: "Men haqimda",
-
                 projects: "Loyihalarim",
-
                 contact: "Bog‘lanish",
-
                 subtitle:
                     "Frontend dasturchi • Talaba",
-
                 aboutText:
                     "Men 16 yoshli o‘quvchiman va web dasturlashni o‘rganmoqdaman. HTML, CSS va JavaScript bilan saytlar yarataman."
-
             }
 
         };
-
-        /* FUNCTION */
 
         function setLanguage(lang) {
 
@@ -1022,15 +1025,14 @@
 
         }
 
-        /* LOAD SAVED LANGUAGE */
-
         let savedLang =
             localStorage.getItem(
                 "language"
             ) || "en";
 
         applyLanguage(savedLang);
-        /* LOADING */
+
+        /* LOADER */
 
         window.addEventListener(
             "load",
@@ -1047,6 +1049,54 @@
 
             }
         );
+
+        /* PARTICLES */
+
+        particlesJS("particles-js", {
+
+            particles: {
+
+                number: {
+                    value: 60
+                },
+
+                color: {
+                    value: "#38bdf8"
+                },
+
+                shape: {
+                    type: "circle"
+                },
+
+                opacity: {
+                    value: 0.5
+                },
+
+                size: {
+                    value: 3
+                },
+
+                move: {
+                    enable: true,
+                    speed: 2
+                }
+
+            },
+
+            interactivity: {
+
+                events: {
+
+                    onhover: {
+                        enable: true,
+                        mode: "repulse"
+                    }
+
+                }
+
+            }
+
+        });
 
     </script>
 
