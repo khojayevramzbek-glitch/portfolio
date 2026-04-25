@@ -150,6 +150,22 @@
 
         }
 
+        .hamburger {
+
+            display: none;
+
+            background: none;
+
+            border: none;
+
+            color: white;
+
+            font-size: 28px;
+
+            cursor: pointer;
+
+        }
+
         /* HERO */
 
         header {
@@ -793,60 +809,59 @@
             width: 100%;
 
         }
-        .hamburger {
 
-display: none;
+        @media (max-width: 768px) {
 
-font-size: 26px;
+            .navbar {
+                justify-content: space-between;
+                padding: 15px 20px;
+            }
 
-background: none;
+            .hamburger {
+                display: block;
+            }
 
-border: none;
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                padding: 20px 0;
+                background: rgba(2, 6, 23, 0.95);
+                display: none;
+                z-index: 20;
+            }
 
-color: white;
+            .nav-links.show {
+                display: flex;
+            }
 
-cursor: pointer;
+            .nav-links li {
+                width: 100%;
+            }
 
-}
-@media (max-width: 768px) {
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 12px 20px;
+            }
 
-.hamburger {
+            .lang-switch {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                gap: 10px;
+            }
 
-display: block;
+            .theme-btn {
+                order: 2;
+            }
 
-}
-
-.nav-links {
-
-position: absolute;
-
-top: 70px;
-
-left: 0;
-
-width: 100%;
-
-background: rgba(2, 6, 23, 0.95);
-
-flex-direction: column;
-
-align-items: center;
-
-gap: 20px;
-
-padding: 20px 0;
-
-display: none;
-
-}
-
-.nav-links.show {
-
-display: flex;
-
-}
-
-}
+        }
     </style>
 
 </head>
@@ -872,6 +887,10 @@ display: flex;
         <h2 class="logo">
             Ramzbek
         </h2>
+
+        <button id="hamburger" class="hamburger" aria-label="Toggle navigation">
+            ☰
+        </button>
 
         <ul class="nav-links">
 
@@ -1508,24 +1527,6 @@ sen yuborgan kodning oxiridagi <script> ni shu bilan almashtir -->
             });
         });
 
-        window.addEventListener("scroll", () => {
-
-            const scrollTop =
-                document.documentElement.scrollTop;
-
-            const height =
-                document.documentElement.scrollHeight -
-                document.documentElement.clientHeight;
-
-            const scrolled =
-                (scrollTop / height) * 100;
-
-            document.getElementById(
-                "progress-bar"
-            ).style.width =
-                scrolled + "%";
-
-        });
         const sections =
             document.querySelectorAll("section");
 
@@ -1584,22 +1585,27 @@ sen yuborgan kodning oxiridagi <script> ni shu bilan almashtir -->
 
             }
         );
-        const hamburger =
-document.getElementById("hamburger");
 
-const navLinks =
-document.getElementById("navLinks");
+        const mobileMenu = document.querySelector(".nav-links");
+        const hamburger = document.getElementById("hamburger");
 
-hamburger.addEventListener(
-"click",
-() => {
+        function updateHamburgerIcon() {
+            const isOpen = mobileMenu.classList.contains("show");
+            hamburger.textContent = isOpen ? "✕" : "☰";
+            hamburger.setAttribute("aria-expanded", isOpen);
+        }
 
-navLinks.classList.toggle(
-"show"
-);
+        hamburger.addEventListener("click", () => {
+            mobileMenu.classList.toggle("show");
+            updateHamburgerIcon();
+        });
 
-}
-);
+        mobileMenu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.remove("show");
+                updateHamburgerIcon();
+            });
+        });
     </script>
 
     <button id="topBtn">↑</button>
